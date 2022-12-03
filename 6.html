@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Необязательное задание.
+
+Необходимо реализовать функцию, которая будет принимать первым аргументом
+целое положительное число, в следующих трех аргументах функция принимает слова
+в разных склонениях.
+Функция должна возвращать одно из трех переданных в параметры слов подходящее
+под число, которое передано первым аргументом.
+
+Пример:
+console.log(declinationOfNumber(1, "яблоко", "яблока", "яблок")); // "яблоко"
+console.log(declinationOfNumber(2, "мяч", "мяча", "мячей")); // "мяча"
+console.log(declinationOfNumber(5, "стул", "стула", "стульев")); // "стульев"
+
+Функция должна работать с любым словом и любым целым положительным числом.
+Все аргументы, которые будут передаваться функции будут верны.
+-->
+<script>
+  "use strict";
+
+   /**
+   * Функция добавляющая склонение к поданому количеству.
+   * @param {number} count - количество.
+   * @param {string} one - склонение для 1 (яблоко).
+   * @param {string} two - склонение для 2 (яблока).
+   * @param {string} five - склонение для 5 (яблок).
+   * @returns {string} Склоненное слово в зависимости от поданого количества.
+   */
+
+  function declinationOfNumber(count, one, two, five) {
+    if (count <=9){
+      if (count === 1){
+        return `${count} ${one}`;
+      } else if (count >= 2 && count < 5){
+        return `${count} ${two}`;
+      } 
+      return `${count} ${five}`;
+    }
+    else {}
+      if (count >= 11 && count <=19){
+        return `${count} ${five}`;
+      } else if (count % 10 === 0){
+          return `${count} ${five}`;
+        } else if (count % 10 === 1){
+          return `${count} ${one}`;
+        } else if ((count % 10) >= 5 && (count %10) <= 9){
+          return `${count} ${five}`;
+        }else{
+          return `${count} ${two}`;
+        }
+      }
+    /** это то, что я нарешал своим умом но при проверке понял, что мое решение работает с числами только до ста, а потом решил посмотреть ваше решиние и немного 
+     * подсписать (процентов 90 :) ) но при этом я правда понял, как это работает.  
+     **/   
+
+
+  function declinationOfNumber2(count, one, two, five) {
+    const n100 = count % 100;
+    const n10 = n100 % 10;
+
+    if (n100 >= 5 && n100 <= 20) {
+      return `${count} ${five}`;
+    }
+    if (n10 > 1 && n10 < 5) {
+      return `${count} ${two}`;
+    }
+    if (n10 === 1) {
+      return `${count} ${one}`;
+    }
+    return `${count} ${five}`;
+  }
+
+
+  console.log(declinationOfNumber(14, "яблоко", "яблока", "яблок"));
+  console.log(declinationOfNumber(214, "яблоко", "яблока", "яблок")); 
+  console.log(declinationOfNumber(156648, "яблоко", "яблока", "яблок")); 
+
+
+  console.log(declinationOfNumber2(14, "яблоко", "яблока", "яблок"));
+  console.log(declinationOfNumber2(214, "яблоко", "яблока", "яблок")); 
+  console.log(declinationOfNumber2(156648, "яблоко", "яблока", "яблок"));
+
+  
+</script>
+</body>
+</html>
